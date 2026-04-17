@@ -1,0 +1,3 @@
+# Netscape HTTP Cookie File
+
+# Add your account cookies here.
