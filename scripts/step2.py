@@ -13,7 +13,7 @@ logging.basicConfig(
 )
 
 def extract_target_links():
-    target_day = "Today"  # Just change this to "Yesterday" when needed
+    target_day = "Yesterday"  # Just change this to "Today" when needed
     input_file = "fetched-links/A.txt"
     output_file = "fetched-links/B.txt"
     base_url = "https://simpcity.cr"
