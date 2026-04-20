@@ -9,6 +9,7 @@ This script downloads video linked in the forums or threads you've added to Watc
 
 Run the script at the end of the day to automatically collect the latest or run at any time for previous day uploaded external‑link videos from your Watched threads.
 
+Add the file `main.py` in cron job for Linux/MacOS or Scheduled Task for Windows to run python script daily at 12:01 AM or at your time and *ENJOY!*
 
 It does not download images, posts which has written *mirror* word, and embedded videos from turbo. It is created to downlaod only videos with external links. 
 
@@ -62,7 +63,7 @@ pip install -r requirements.txt
 
 ## Cookies Setup
 
-Add an extention for `Netscape HTTP Cookie` in your browser (Firefox extensions works good).
+Add an extention for `Netscape HTTP Cookie` in your browser (Firefox browser Add-ons works great). Tested with [Cookies.txt](https://addons.mozilla.org/en-CA/firefox/addon/cookies-txt/).
 
 Login to your SimpCity account (make sure you have added forums to your wached list). 
 
@@ -72,7 +73,7 @@ From the extension, copy cookies and paste it into `cookies.txt` file present in
 
 Default is set to `Yesterday`.
  
-Changes needs to be done at `scripts` > `step2.py` and find `target_day = "Yesterday"`
+Change needs to be done at `scripts` > `step2.py` and find `target_day = "Yesterday"`
 
 Replace "Yesterday" with "Today" for today's posts.
 
@@ -81,22 +82,26 @@ Replace "Yesterday" with "Today" for today's posts.
 **Automatic Run**
 
 ```bash
-python3 main.py
+python main.py
 ```
+
+Once it starts downloading videos from link, the terminal will feel stuck but it is working in background. 
+
+Downlaoded videos will be stored outside of the current directory- `cd ../city_videos`. Find folder name `city_videos`.
 
 **Custom Run**
 
 ```bash
 cd scripts
 
-python3 step1.py
+python step1.py
 
-python3 step2.py
+python step2.py
 
-python3 step3.py
+python step3.py
 ```
 
-Check which urls going to be downloaded in `../fetched-links/C.txt`  
+You can check which urls are going to be downloaded in the file: `../fetched-links/C.txt`  
 
 ```bash
 cat ../fetched-links/C.txt
@@ -105,9 +110,14 @@ cat ../fetched-links/C.txt
 You can remove or add links from the `C.txt` file and then run the next step. 
 
 ```bash
-python3 step4.py
+python step4.py
 ```
 
+**OR** you can run step 4 directly using *gallery-dl*:
+```
+gallery-dl -v -l ../fetched-links/C.txt -o ../city_videos
+```
+Running the above command will provide you progress bar for each video.
 
 ## Find Logs
 
