@@ -5,7 +5,7 @@ SimpCity Watched Forum/Threads Video Downloader
 This script downloads video linked in the forums or threads you've added to Watched on SimpCity.
 
 - Use the "Today" keyword to fetch videos posted during the current day.
-- Use the "Yesterday" keyword (default) to retrieve videos from the previous day.
+- Use the "Yesterday" keyword (default) to retrieve videos from the previous day (No need to change anything in code).
 
 Run the script at the end of the day to automatically collect the latest or run at any time for previous day uploaded external‑link videos from your Watched threads.
 
@@ -52,7 +52,7 @@ pip install -r requirements.txt
 
 **Windows**
 
-```cmd
+```powershell
 python -m venv .venv
 
 .venv\Scripts\activate.bat
@@ -68,11 +68,13 @@ Login to your SimpCity account (make sure you have added forums to your wached l
 
 From the extension, copy cookies and paste it into `cookies.txt` file present in the current directory.
 
-## Customization
+## Customization (Optional)
 
-Customize today's post or yesterday's post from `scripts` > `step2.py` and find `target_day = "Yesterday"`
+Default is set to `Yesterday`.
+ 
+Changes needs to be done at `scripts` > `step2.py` and find `target_day = "Yesterday"`
 
-Default is set to `Yesterday`. You can change it to `Today`, if you want today's posted videos. 
+Replace "Yesterday" with "Today" for today's posts.
 
 ## Run
 
