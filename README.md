@@ -115,7 +115,7 @@ python step4.py
 
 **OR** you can run step 4 directly using *gallery-dl*:
 ```
-gallery-dl -v -l ../fetched-links/C.txt -o ../city_videos
+gallery-dl -v -i ../fetched-links/C.txt -d ../city_videos
 ```
 Running the above command will provide you progress bar for each video.
 
