@@ -1,35 +1,34 @@
 # simpcity-watched-dl 
 
-SimpCity Watched Forum/Threads Video Downloader
+SimpCity Watched Threads Video Downloader
 
-This script downloads video linked in the forums or threads you've added to Watched on SimpCity.
+This script downloads video linked in the threads you've added to Watched on SimpCity.
 
 - Use the "Today" keyword to fetch videos posted during the current day.
 - Use the "Yesterday" keyword (default) to retrieve videos from the previous day (No need to change anything in code).
 
 Run the script at the end of the day to automatically collect the latest or run at any time for previous day uploaded external‑link videos from your Watched threads.
 
-Add the file `main.py` in cron job for Linux/MacOS or Scheduled Task for Windows to run python script daily at 12:01 AM or at your time and *ENJOY!*
+Tip: Add the file `main.py` in cron job for Linux/MacOS or Scheduled Task for Windows to run python script daily at 12:01 AM or at your time and *ENJOY!*
 
-It does not download images, posts which has written *mirror* word, and embedded videos from turbo. It is created to downlaod only videos with external links. 
+Note: It does not download images, posts which has written *mirror* word, and embedded videos from turbo. It is created to downlaod only videos with external links. 
 
 It requires 
-- Python3 
+- Python3.10 or newer 
 - SimpCity 
     - account 
-    - added forums or threads to Watched 
+    - added thread(s) to Watched 
     - Netscape HTTP Cookie 
 
-It uses [gallery-dl](https://github.com/mikf/gallery-dl) to download videos.
+Thanks: It uses [gallery-dl](https://github.com/mikf/gallery-dl) to download videos.
 
 # How To
 
 - [Clone Repository](#clone-repository) 
 - [Python Setup](#python-setup) 
 - [Cookies Setup](#cookies-setup)
-- [Customization](#customization)
+- [Customization (optional)](#customization-optional)
 - [Run](#run)
-- [Logs](#find-logs)
 
 ## Clone Repository
 
@@ -63,19 +62,19 @@ pip install -r requirements.txt
 
 ## Cookies Setup
 
-Add an extention for `Netscape HTTP Cookie` in your browser (Firefox browser Add-ons works great). Tested with [Cookies.txt](https://addons.mozilla.org/en-CA/firefox/addon/cookies-txt/).
+Add an extention for `Netscape HTTP Cookie` in your browser (Firefox browser Add-ons works great). Tested with [Cookies-txt](https://addons.mozilla.org/en-CA/firefox/addon/cookies-txt/).
 
-Login to your SimpCity account (make sure you have added forums to your wached list). 
+Login to your SimpCity account (make sure you have added threads to your wached list). 
 
-From the extension, copy cookies and paste it into `cookies.txt` file present in the current directory.
+From the extension, copy cookies for this site and paste it into `cookies.txt` file present in the current directory.
 
 ## Customization (Optional)
 
-Default is set to `Yesterday`.
+Default is set to `Yesterday`. Will fetch and download from Yesterday posted content.
  
-Change needs to be done at `scripts` > `step2.py` and find `target_day = "Yesterday"`
-
 Replace "Yesterday" with "Today" for today's posts.
+
+Change needs to be done at `scripts` > `step2.py` and find `target_day = "Yesterday"`
 
 ## Run
 
@@ -101,11 +100,8 @@ python step2.py
 python step3.py
 ```
 
-You can check which urls are going to be downloaded in the file: `../fetched-links/C.txt`  
-
-```bash
-cat ../fetched-links/C.txt
-```
+You can check which urls are going to be downloaded in the file: 
+- `../fetched-links/C.txt`  
 
 You can remove or add links from the `C.txt` file and then run the next step. 
 
@@ -117,15 +113,12 @@ python step4.py
 ```
 gallery-dl -v -i ../fetched-links/C.txt -d ../city_videos
 ```
-Running the above command will provide you progress bar for each video.
+Running the above command will provide you progress for each video download.
 
 ## Find Logs
 
-```bash
-cat log.txt
-```
-
-Logs reset at every run.
+- `log.txt`
+- Logs reset at every run.
 
 # License
 
